@@ -7,6 +7,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping
+@CrossOrigin("https://frontend-register-app-squad-cadastro.vercel.app/")
 public class CadastroController {
 
     @GetMapping("/hello")
