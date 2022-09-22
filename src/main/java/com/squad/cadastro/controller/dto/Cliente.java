@@ -6,11 +6,13 @@ public class Cliente implements Serializable {
     private String id;
     private String nome;
     private String email;
+    private String documento;
 
-    public Cliente(String id, String nome, String email) {
+    public Cliente(String id, String nome, String email, String documento) {
         this.id = id;
         this.nome = nome;
         this.email = email;
+        this.documento = documento;
     }
 
     public String getId() {
@@ -36,4 +38,13 @@ public class Cliente implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
+    public String getDocumento() {
+
+        return documento;
+    }
+    public void setDocumento(String documento) {
+
+        this.documento = documento;
+    }
+    
 }
