@@ -1,8 +1,6 @@
 package com.squad.cadastro.controller;
 
-import com.squad.cadastro.controller.dto.Cliente;
 import com.squad.cadastro.controller.dto.ClienteDto;
-import com.squad.cadastro.controller.dto.EnderecoResponse;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
