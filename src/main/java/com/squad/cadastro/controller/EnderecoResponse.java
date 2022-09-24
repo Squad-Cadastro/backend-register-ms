@@ -11,19 +11,22 @@ public class EnderecoResponse implements Serializable{
     private String localidade;
     private String uf;
 
-    public EnderecoResponse(String cep, String logradouro, String uf, String localidade, String bairro, String complemento) {
+    public EnderecoResponse() {
+    }
+
+    public EnderecoResponse(String cep, String logradouro, String complemento, String bairro, String localidade, String uf) {
         this.cep = cep;
         this.logradouro = logradouro;
-        this.uf = uf;
-        this.localidade = localidade;
-        this.bairro = bairro;
         this.complemento = complemento;
+        this.bairro = bairro;
+        this.localidade = localidade;
+        this.uf = uf;
     }
 
     public String getCep(){
         return cep;
     }
-    public void setCep(){
+    public void setCep(String cep){
         this.cep = cep;
     }
     public String getLogradouro(){
@@ -43,9 +46,7 @@ public class EnderecoResponse implements Serializable{
     {
         this.complemento = complemento;
     }
-
     public String getBairro(){
-
         return bairro;
 
     }
@@ -61,13 +62,11 @@ public class EnderecoResponse implements Serializable{
     public void setLocalidade(String localidade){
         this.localidade = localidade;
     }
-
     public String getUf(){
-
         return uf;
-
     }
     public void setUf(String uf){
         this.uf = uf;
     }
+
 }
