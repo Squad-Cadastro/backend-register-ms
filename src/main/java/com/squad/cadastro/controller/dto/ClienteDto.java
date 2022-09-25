@@ -7,12 +7,15 @@ public class Cliente implements Serializable {
     private String nome;
     private String email;
     private String documento;
+    private String telefone;
 
     public Cliente(String id, String nome, String email, String documento) {
+    public ClienteDto(String id, String nome, String email, String telefone) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.documento = documento;
+        this.telefone = telefone;
     }
 
     public String getId() {
@@ -46,5 +49,13 @@ public class Cliente implements Serializable {
 
         this.documento = documento;
     }
-    
+
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
 }

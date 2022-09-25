@@ -1,7 +1,6 @@
 package com.squad.cadastro.controller;
 
 import com.squad.cadastro.controller.dto.Cliente;
-import com.squad.cadastro.validator.DocumentoValidatorInterface;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -16,11 +15,9 @@ public class CadastroController {
         this.documentoValidatorInterface = documentoValidatorInterface;
     }
 
-    @GetMapping("/hello")
-    public String helloDev() {
-        sum(2, 3);
-        return "Hello developer \n Este é um exemplo de como fazer uma chamada GET utilizando protocolo HTTP";
-
+    @GetMapping("/cep/{cep}")
+    public EnderecoResponse buscarEndereco(@PathVariable String cep){
+        return new RestTemplate().getForEntity("https://viacep.com.br/ws/"+ cep +"/json/", EnderecoResponse.class).getBody();
     }
 
     @PostMapping("/sum/{a}/{b}")
