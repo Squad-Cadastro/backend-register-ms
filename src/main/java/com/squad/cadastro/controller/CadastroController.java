@@ -1,7 +1,11 @@
 package com.squad.cadastro.controller;
 
-import com.squad.cadastro.controller.dto.Cliente;
+import com.squad.cadastro.controller.dto.ClienteDto;
+import com.squad.cadastro.validator.ValidatorInterface;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.UUID;
 
@@ -9,10 +13,10 @@ import java.util.UUID;
 @RequestMapping
 @CrossOrigin("https://frontend-register-app-squad-cadastro.vercel.app/")
 public class CadastroController {
-    DocumentoValidatorInterface documentoValidatorInterface;
+    ValidatorInterface validatorInterface;
 
-    public CadastroController(DocumentoValidatorInterface documentoValidatorInterface) {
-        this.documentoValidatorInterface = documentoValidatorInterface;
+    public CadastroController(ValidatorInterface validatorInterface) {
+        this.validatorInterface = validatorInterface;
     }
 
     @GetMapping("/cep/{cep}")
@@ -26,12 +30,17 @@ public class CadastroController {
     }
 
     @PostMapping("/clientes")
-    public Cliente create(@RequestBody Cliente cliente){
+    public ResponseEntity<?> create(@RequestBody ClienteDto cliente){
         cliente.setId(String.valueOf(UUID.randomUUID()));
-        var result = documentoValidatorInterface.validarCPF(cliente.getDocumento());
-        if (!result){
-            System.out.println("Documento invalido");
+        if (validatorInterface.validarEmail(cliente.getEmail())){
+            return new ResponseEntity<>("Email invalido",
+                    HttpStatus.BAD_REQUEST);
         }
-        return cliente;
+        if (validatorInterface.validarCPF(cliente.getDocumento())) {
+            return new ResponseEntity<>(cliente, HttpStatus.CREATED);
+        }
+        return new ResponseEntity<>("Documento invalido",
+                    HttpStatus.BAD_REQUEST);
+
     }
 }

@@ -1,5 +1,7 @@
 package com.squad.cadastro.validator;
 
-public interface DocumentoValidatorInterface {
+public interface ValidatorInterface {
     boolean validarCPF(String documento);
+
+    boolean validarEmail(String email);
 }

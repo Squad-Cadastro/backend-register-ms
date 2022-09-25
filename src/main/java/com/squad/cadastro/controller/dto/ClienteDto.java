@@ -2,15 +2,15 @@ package com.squad.cadastro.controller.dto;
 
 import java.io.Serializable;
 
-public class Cliente implements Serializable {
+public class ClienteDto implements Serializable {
     private String id;
     private String nome;
     private String email;
     private String documento;
     private String telefone;
 
-    public Cliente(String id, String nome, String email, String documento) {
-    public ClienteDto(String id, String nome, String email, String telefone) {
+
+    public ClienteDto(String id, String nome, String email,String documento, String telefone) {
         this.id = id;
         this.nome = nome;
         this.email = email;
