@@ -1,6 +1,9 @@
 package com.squad.cadastro.controller;
 
 import com.squad.cadastro.controller.dto.ClienteDto;
+import com.squad.cadastro.validator.ValidatorInterface;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -10,6 +13,11 @@ import java.util.UUID;
 @RequestMapping
 @CrossOrigin("https://frontend-register-app-squad-cadastro.vercel.app/")
 public class CadastroController {
+    ValidatorInterface validatorInterface;
+
+    public CadastroController(ValidatorInterface validatorInterface) {
+        this.validatorInterface = validatorInterface;
+    }
 
     @GetMapping("/cep/{cep}")
     public EnderecoResponse buscarEndereco(@PathVariable String cep){
@@ -22,8 +30,17 @@ public class CadastroController {
     }
 
     @PostMapping("/clientes")
-    public ClienteDto create(@RequestBody ClienteDto cliente){
+    public ResponseEntity<?> create(@RequestBody ClienteDto cliente){
         cliente.setId(String.valueOf(UUID.randomUUID()));
-        return cliente;
+        if (validatorInterface.validarEmail(cliente.getEmail())){
+            return new ResponseEntity<>("Email invalido",
+                    HttpStatus.BAD_REQUEST);
+        }
+        if (validatorInterface.validarCPF(cliente.getDocumento())) {
+            return new ResponseEntity<>(cliente, HttpStatus.CREATED);
+        }
+        return new ResponseEntity<>("Documento invalido",
+                    HttpStatus.BAD_REQUEST);
+
     }
 }

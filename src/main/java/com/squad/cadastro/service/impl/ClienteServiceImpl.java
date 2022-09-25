@@ -2,7 +2,7 @@ package com.squad.cadastro.service.impl;
 
 import com.squad.cadastro.controller.dto.ClienteDto;
 import com.squad.cadastro.service.ClienteService;
-import com.squad.cadastro.validator.Validator;
+import com.squad.cadastro.validator.ValidatorInterface;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -10,9 +10,9 @@ import java.util.UUID;
 @Service
 public class ClienteServiceImpl implements ClienteService {
 
-    Validator validator;
+    ValidatorInterface validator;
 
-    public ClienteServiceImpl(Validator validator) {
+    public ClienteServiceImpl(ValidatorInterface validator) {
         this.validator = validator;
     }
 

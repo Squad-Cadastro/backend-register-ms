@@ -6,12 +6,15 @@ public class ClienteDto implements Serializable {
     private String id;
     private String nome;
     private String email;
+    private String documento;
     private String telefone;
 
-    public ClienteDto(String id, String nome, String email, String telefone) {
+
+    public ClienteDto(String id, String nome, String email,String documento, String telefone) {
         this.id = id;
         this.nome = nome;
         this.email = email;
+        this.documento = documento;
         this.telefone = telefone;
     }
 
@@ -38,6 +41,15 @@ public class ClienteDto implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
+    public String getDocumento() {
+
+        return documento;
+    }
+    public void setDocumento(String documento) {
+
+        this.documento = documento;
+    }
+
 
     public String getTelefone() {
         return telefone;
