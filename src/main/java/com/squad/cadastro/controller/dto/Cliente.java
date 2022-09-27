@@ -9,20 +9,46 @@ public class Cliente implements Serializable {
     private String sobrenome;
     private String documento;
     private String tipo_pessoa;
-    private LocalDate data_nascimanto;
+    private LocalDate data_nascimento;
     private String telefone;
     private String email;
+    private LocalDate dataCadastro;
+    private String[] endereco;
+    private String logradouro;
+    private String principal;
+    private String numero;
+    private String cep;
+    private String bairro;
+    private String localidade;
+    private String uf;
+
+
+
+
 
     public Cliente(String id, String nome, String sobrenome, String documento,
-                   String tipo_pessoa, LocalDate data_nascimanto, String telefone, String email) {
+        String tipo_pessoa, LocalDate data_nascimento, String telefone, String email,
+        LocalDate dataCadastro, String[] endereco, String logradouro, String principal,
+        String numero, String cep, String bairro, String localidade, String uf )
+    {
+
         this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.documento = documento;
         this.tipo_pessoa = tipo_pessoa;
-        this.data_nascimanto = data_nascimanto;
+        this.data_nascimento = data_nascimento;
         this.telefone = telefone;
         this.email = email;
+        this.dataCadastro = dataCadastro;
+        this.endereco = endereco;
+        this.logradouro = logradouro;
+        this.principal = principal;
+        this.numero = numero;
+        this.cep = cep;
+        this.bairro = bairro;
+        this.localidade = localidade;
+        this.uf = uf;
     }
 
     public String getId() {
@@ -65,12 +91,12 @@ public class Cliente implements Serializable {
         this.tipo_pessoa = tipo_pessoa;
     }
 
-    public LocalDate getData_nascimanto() {
-        return data_nascimanto;
+    public LocalDate getData_nascimento() {
+        return data_nascimento;
     }
 
-    public void setData_nascimanto(LocalDate data_nascimanto) {
-        this.data_nascimanto = data_nascimanto;
+    public void setData_nascimento(LocalDate data_nascimento) {
+        this.data_nascimento = data_nascimento;
     }
 
     public String getTelefone() {
@@ -87,5 +113,77 @@ public class Cliente implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public LocalDate getDataCadastro() {
+        return dataCadastro;
+    }
+
+    public void setDataCadastro(LocalDate dataCadastro) {
+        this.dataCadastro = dataCadastro;
+    }
+
+    public String[] getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String[] endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getLogradouro() {
+        return logradouro;
+    }
+
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
+    }
+
+    public String getPrincipal() {
+        return principal;
+    }
+
+    public void setPrincipal(String principal) {
+        this.principal = principal;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public String getLocalidade() {
+        return localidade;
+    }
+
+    public void setLocalidade(String localidade) {
+        this.localidade = localidade;
+    }
+
+    public String getUf() {
+        return uf;
+    }
+
+    public void setUf(String uf) {
+        this.uf = uf;
     }
 }

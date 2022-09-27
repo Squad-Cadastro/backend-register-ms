@@ -1,6 +1,8 @@
 package com.squad.cadastro.controller;
 
 import com.squad.cadastro.controller.dto.Cliente;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -25,4 +27,15 @@ public class CadastroController {
         cliente.setId(String.valueOf(UUID.randomUUID()));
         return cliente;
     }
+
+//    @GetMapping("/list")
+//    public ResponseEntity<List<Cliente>> listar(){
+//        return new ResponseEntity<List<Cliente>>(clienteService.listar(), HttpStatus.OK);
+//    }
+
+//    @GetMapping("/clientes/{documento}")
+//    public ResponseEntity<Cliente> getByDocument(){
+//        return new ResponseEntity<Cliente>(clientService.getByDocumento(), HttpStatus.OK);
+//    }
+
 }
