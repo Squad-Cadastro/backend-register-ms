@@ -8,16 +8,17 @@ public class ClienteDto implements Serializable {
     private String email;
     private String documento;
     private String telefone;
+    private String data;
 
 
-    public ClienteDto(String id, String nome, String email,String documento, String telefone) {
+    public ClienteDto(String id, String nome, String email, String documento, String telefone,String data) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.documento = documento;
         this.telefone = telefone;
+        this.data = data;
     }
-
     public String getId() {
         return id;
     }
@@ -57,5 +58,13 @@ public class ClienteDto implements Serializable {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
     }
 }

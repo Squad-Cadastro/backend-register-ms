@@ -19,6 +19,7 @@ public class CadastroController {
         this.validatorInterface = validatorInterface;
     }
 
+
     @GetMapping("/cep/{cep}")
     public EnderecoResponse buscarEndereco(@PathVariable String cep){
         return new RestTemplate().getForEntity("https://viacep.com.br/ws/"+ cep +"/json/", EnderecoResponse.class).getBody();
@@ -30,17 +31,20 @@ public class CadastroController {
     }
 
     @PostMapping("/clientes")
-    public ResponseEntity<?> create(@RequestBody ClienteDto cliente){
+    public ResponseEntity<?> create(@RequestBody ClienteDto cliente) {
         cliente.setId(String.valueOf(UUID.randomUUID()));
-        if (validatorInterface.validarEmail(cliente.getEmail())){
+        if (validatorInterface.validarEmail(cliente.getEmail())) {
             return new ResponseEntity<>("Email invalido",
                     HttpStatus.BAD_REQUEST);
         }
-        if (validatorInterface.validarCPF(cliente.getDocumento())) {
+        if (!validatorInterface.validarCPF(cliente.getDocumento())) {
+            return new ResponseEntity<>("Documento invalido",
+                    HttpStatus.BAD_REQUEST);
+        }
+        if (validatorInterface.validarData(cliente.getData())) {
             return new ResponseEntity<>(cliente, HttpStatus.CREATED);
         }
-        return new ResponseEntity<>("Documento invalido",
-                    HttpStatus.BAD_REQUEST);
-
+        return new ResponseEntity<>("Data invalida",
+                HttpStatus.BAD_REQUEST);
     }
 }
