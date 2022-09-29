@@ -2,7 +2,7 @@ package com.squad.cadastro.controller;
 import java.io.Serializable;
 
 
-public class EnderecoResponse implements Serializable{
+public class EnderecoApiResponse implements Serializable{
 
     private String cep;
     private String logradouro;
@@ -11,10 +11,10 @@ public class EnderecoResponse implements Serializable{
     private String localidade;
     private String uf;
 
-    public EnderecoResponse() {
+    public EnderecoApiResponse() {
     }
 
-    public EnderecoResponse(String cep, String logradouro, String complemento, String bairro, String localidade, String uf) {
+    public EnderecoApiResponse(String cep, String logradouro, String complemento, String bairro, String localidade, String uf) {
         this.cep = cep;
         this.logradouro = logradouro;
         this.complemento = complemento;

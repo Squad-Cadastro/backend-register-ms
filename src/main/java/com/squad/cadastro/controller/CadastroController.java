@@ -1,6 +1,9 @@
 package com.squad.cadastro.controller;
 
-import com.squad.cadastro.controller.dto.Cliente;
+import com.squad.cadastro.controller.dto.ClienteDto;
+import com.squad.cadastro.validator.ValidatorInterface;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -17,8 +20,8 @@ public class CadastroController {
     }
 
     @GetMapping("/cep/{cep}")
-    public EnderecoResponse buscarEndereco(@PathVariable String cep){
-        return new RestTemplate().getForEntity("https://viacep.com.br/ws/"+ cep +"/json/", EnderecoResponse.class).getBody();
+    public EnderecoApiResponse buscarEndereco(@PathVariable String cep){
+        return new RestTemplate().getForEntity("https://viacep.com.br/ws/"+ cep +"/json/", EnderecoApiResponse.class).getBody();
     }
 
     @PostMapping("/sum/{a}/{b}")

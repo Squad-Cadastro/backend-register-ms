@@ -2,46 +2,31 @@ package com.squad.cadastro.controller.dto;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 public class ClienteDto implements Serializable {
     private String id;
     private String nome;
     private String sobrenome;
     private String documento;
-    private String tipo_pessoa;
-    private LocalDate data_nascimento;
+    private String tipoPessoa;
+    private LocalDate dataNascimento;
     private String telefone;
     private String email;
     private LocalDate dataCadastro;
-    private String[] endereco;
-    private String logradouro;
-    private String principal;
-    private String numero;
-    private String cep;
-    private String bairro;
-    private String localidade;
-    private String uf;
+    private List<EnderecoDto> endereco;
 
-
-
-    public ClienteDto(String id, String nome, String email,String documento, String telefone) {
+    public ClienteDto(String id, String nome, String sobrenome, String documento, String tipoPessoa, LocalDate dataNascimento, String telefone, String email, LocalDate dataCadastro, List<EnderecoDto> endereco) {
         this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.documento = documento;
-        this.tipo_pessoa = tipo_pessoa;
-        this.data_nascimento = data_nascimento;
+        this.tipoPessoa = tipoPessoa;
+        this.dataNascimento = dataNascimento;
         this.telefone = telefone;
         this.email = email;
         this.dataCadastro = dataCadastro;
         this.endereco = endereco;
-        this.logradouro = logradouro;
-        this.principal = principal;
-        this.numero = numero;
-        this.cep = cep;
-        this.bairro = bairro;
-        this.localidade = localidade;
-        this.uf = uf;
     }
 
     public String getId() {
@@ -76,20 +61,20 @@ public class ClienteDto implements Serializable {
         this.documento = documento;
     }
 
-    public String getTipo_pessoa() {
-        return tipo_pessoa;
+    public String getTipoPessoa() {
+        return tipoPessoa;
     }
 
-    public void setTipo_pessoa(String tipo_pessoa) {
-        this.tipo_pessoa = tipo_pessoa;
+    public void setTipoPessoa(String tipoPessoa) {
+        this.tipoPessoa = tipoPessoa;
     }
 
-    public LocalDate getData_nascimento() {
-        return data_nascimento;
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
     }
 
-    public void setData_nascimento(LocalDate data_nascimento) {
-        this.data_nascimento = data_nascimento;
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 
     public String getTelefone() {
@@ -116,67 +101,11 @@ public class ClienteDto implements Serializable {
         this.dataCadastro = dataCadastro;
     }
 
-    public String[] getEndereco() {
+    public List<EnderecoDto> getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(String[] endereco) {
+    public void setEndereco(List<EnderecoDto> endereco) {
         this.endereco = endereco;
-    }
-
-    public String getLogradouro() {
-        return logradouro;
-    }
-
-    public void setLogradouro(String logradouro) {
-        this.logradouro = logradouro;
-    }
-
-    public String getPrincipal() {
-        return principal;
-    }
-
-    public void setPrincipal(String principal) {
-        this.principal = principal;
-    }
-
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
-    public String getCep() {
-        return cep;
-    }
-
-    public void setCep(String cep) {
-        this.cep = cep;
-    }
-
-    public String getBairro() {
-        return bairro;
-    }
-
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
-    }
-
-    public String getLocalidade() {
-        return localidade;
-    }
-
-    public void setLocalidade(String localidade) {
-        this.localidade = localidade;
-    }
-
-    public String getUf() {
-        return uf;
-    }
-
-    public void setUf(String uf) {
-        this.uf = uf;
     }
 }
