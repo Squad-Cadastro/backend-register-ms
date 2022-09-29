@@ -1,9 +1,8 @@
 package com.squad.cadastro.controller;
 
 import com.squad.cadastro.controller.dto.Cliente;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.UUID;
 
@@ -11,10 +10,15 @@ import java.util.UUID;
 @RequestMapping
 @CrossOrigin("https://frontend-register-app-squad-cadastro.vercel.app/")
 public class CadastroController {
+    ValidatorInterface validatorInterface;
 
-    @GetMapping("/hello")
-    public String helloDev() {
-        return "Hello developer \n Este é um exemplo de como fazer uma chamada GET utilizando protocolo HTTP";
+    public CadastroController(ValidatorInterface validatorInterface) {
+        this.validatorInterface = validatorInterface;
+    }
+
+    @GetMapping("/cep/{cep}")
+    public EnderecoResponse buscarEndereco(@PathVariable String cep){
+        return new RestTemplate().getForEntity("https://viacep.com.br/ws/"+ cep +"/json/", EnderecoResponse.class).getBody();
     }
 
     @PostMapping("/sum/{a}/{b}")
@@ -23,19 +27,17 @@ public class CadastroController {
     }
 
     @PostMapping("/clientes")
-    public Cliente create(@RequestBody Cliente cliente){
+    public ResponseEntity<?> create(@RequestBody ClienteDto cliente){
         cliente.setId(String.valueOf(UUID.randomUUID()));
-        return cliente;
+        if (validatorInterface.validarEmail(cliente.getEmail())){
+            return new ResponseEntity<>("Email invalido",
+                    HttpStatus.BAD_REQUEST);
+        }
+        if (validatorInterface.validarCPF(cliente.getDocumento())) {
+            return new ResponseEntity<>(cliente, HttpStatus.CREATED);
+        }
+        return new ResponseEntity<>("Documento invalido",
+                    HttpStatus.BAD_REQUEST);
+
     }
-
-//    @GetMapping("/list")
-//    public ResponseEntity<List<Cliente>> listar(){
-//        return new ResponseEntity<List<Cliente>>(clienteService.listar(), HttpStatus.OK);
-//    }
-
-//    @GetMapping("/clientes/{documento}")
-//    public ResponseEntity<Cliente> getByDocument(){
-//        return new ResponseEntity<Cliente>(clientService.getByDocumento(), HttpStatus.OK);
-//    }
-
 }

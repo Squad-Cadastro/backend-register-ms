@@ -3,7 +3,7 @@ package com.squad.cadastro.controller.dto;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Cliente implements Serializable {
+public class ClienteDto implements Serializable {
     private String id;
     private String nome;
     private String sobrenome;
@@ -24,14 +24,7 @@ public class Cliente implements Serializable {
 
 
 
-
-
-    public Cliente(String id, String nome, String sobrenome, String documento,
-        String tipo_pessoa, LocalDate data_nascimento, String telefone, String email,
-        LocalDate dataCadastro, String[] endereco, String logradouro, String principal,
-        String numero, String cep, String bairro, String localidade, String uf )
-    {
-
+    public ClienteDto(String id, String nome, String email,String documento, String telefone) {
         this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
