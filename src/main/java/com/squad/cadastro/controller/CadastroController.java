@@ -20,8 +20,8 @@ public class CadastroController {
     }
 
     @GetMapping("/cep/{cep}")
-    public EnderecoResponse buscarEndereco(@PathVariable String cep){
-        return new RestTemplate().getForEntity("https://viacep.com.br/ws/"+ cep +"/json/", EnderecoResponse.class).getBody();
+    public EnderecoApiResponse buscarEndereco(@PathVariable String cep){
+        return new RestTemplate().getForEntity("https://viacep.com.br/ws/"+ cep +"/json/", EnderecoApiResponse.class).getBody();
     }
 
     @PostMapping("/sum/{a}/{b}")
