@@ -46,6 +46,7 @@ public class ClienteServiceImpl implements ClienteService {
         clienteDto.setDocumento(clienteCriado.getDocumento());
         clienteDto.setEmail(clienteCriado.getEmail());
         clienteDto.setTipoPessoa(clienteCriado.getTipoPessoa());
+        clienteDto.setDataNascimento(clienteCriado.getDataNascimento());
         clienteDto.setTelefone(clienteCriado.getTelefone());
         clienteDto.setDataCadastro(clienteCriado.getDataCadastro());
         clienteDto.setDataAtualizacao(clienteCriado.getDataAtualizacao());
