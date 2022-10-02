@@ -1,13 +1,12 @@
 package com.squad.cadastro.controller;
 
 import com.squad.cadastro.controller.dto.ClienteDto;
+import com.squad.cadastro.service.ClienteService;
 import com.squad.cadastro.validator.ValidatorInterface;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.UUID;
 
 @RestController
 @RequestMapping
@@ -15,8 +14,11 @@ import java.util.UUID;
 public class CadastroController {
     ValidatorInterface validatorInterface;
 
-    public CadastroController(ValidatorInterface validatorInterface) {
+    ClienteService clienteService;
+
+    public CadastroController(ValidatorInterface validatorInterface, ClienteService clienteService) {
         this.validatorInterface = validatorInterface;
+        this.clienteService = clienteService;
     }
 
     @GetMapping("/cep/{cep}")
@@ -31,13 +33,13 @@ public class CadastroController {
 
     @PostMapping("/clientes")
     public ResponseEntity<?> create(@RequestBody ClienteDto cliente){
-        cliente.setId(String.valueOf(UUID.randomUUID()));
         if (validatorInterface.validarEmail(cliente.getEmail())){
             return new ResponseEntity<>("Email invalido",
                     HttpStatus.BAD_REQUEST);
         }
         if (validatorInterface.validarCPF(cliente.getDocumento())) {
-            return new ResponseEntity<>(cliente, HttpStatus.CREATED);
+            return new ResponseEntity<>(clienteService.criarCliente(cliente),
+                    HttpStatus.CREATED);
         }
         return new ResponseEntity<>("Documento invalido",
                     HttpStatus.BAD_REQUEST);
