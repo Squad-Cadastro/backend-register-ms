@@ -2,10 +2,11 @@ package com.squad.cadastro.controller.dto;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class ClienteDto implements Serializable {
-    private String id;
+    private Long id;
     private String nome;
     private String sobrenome;
     private String documento;
@@ -13,10 +14,15 @@ public class ClienteDto implements Serializable {
     private LocalDate dataNascimento;
     private String telefone;
     private String email;
-    private LocalDate dataCadastro;
+    private LocalDateTime dataCadastro;
+
+    private LocalDateTime dataAtualizacao;
     private List<EnderecoDto> endereco;
 
-    public ClienteDto(String id, String nome, String sobrenome, String documento, String tipoPessoa, LocalDate dataNascimento, String telefone, String email, LocalDate dataCadastro, List<EnderecoDto> endereco) {
+    public ClienteDto() {
+    }
+
+    public ClienteDto(Long id, String nome, String sobrenome, String documento, String tipoPessoa, LocalDate dataNascimento, String telefone, String email, LocalDateTime dataCadastro, LocalDateTime dataAtualizacao, List<EnderecoDto> endereco) {
         this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
@@ -26,14 +32,15 @@ public class ClienteDto implements Serializable {
         this.telefone = telefone;
         this.email = email;
         this.dataCadastro = dataCadastro;
+        this.dataAtualizacao = dataAtualizacao;
         this.endereco = endereco;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -93,12 +100,20 @@ public class ClienteDto implements Serializable {
         this.email = email;
     }
 
-    public LocalDate getDataCadastro() {
+    public LocalDateTime getDataCadastro() {
         return dataCadastro;
     }
 
-    public void setDataCadastro(LocalDate dataCadastro) {
+    public void setDataCadastro(LocalDateTime dataCadastro) {
         this.dataCadastro = dataCadastro;
+    }
+
+    public LocalDateTime getDataAtualizacao() {
+        return dataAtualizacao;
+    }
+
+    public void setDataAtualizacao(LocalDateTime dataAtualizacao) {
+        this.dataAtualizacao = dataAtualizacao;
     }
 
     public List<EnderecoDto> getEndereco() {
