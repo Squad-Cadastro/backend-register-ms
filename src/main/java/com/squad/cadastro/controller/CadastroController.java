@@ -58,8 +58,12 @@ public class CadastroController {
     }
 
 
+
+
+
     @GetMapping("/clientes/{documento}")
-    public ClienteEntity getByDocumento(@PathVariable String documento) {
-       clienteService.getByDocumento(documento);
+    public ClienteEntity getByDocumento(@RequestParam String documento) {
+
+       return clienteService.getByDocumento(documento);
     }
 }

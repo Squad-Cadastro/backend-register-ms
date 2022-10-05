@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
@@ -66,12 +67,9 @@ public class ClienteServiceImpl implements ClienteService {
 
 
     //Rota par abusca por documento
-    @Autowired
-    ClienteDto clienteDto;
-    public ClienteEntity getByDocumento(@PathVariable String documento){
-        String doc = clienteDto.getDocumento();
-        ClienteEntity clientePorDocumento = clienteRepository.findById(doc);
-        if (!clientePorDocumento) {
+    public ClienteEntity getByDocumento(@RequestParam String documento){
+        final var clientePorDocumento = clienteRepository.fyndByDocumento(documento);
+        if (clientePorDocumento == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
         return clientePorDocumento;
