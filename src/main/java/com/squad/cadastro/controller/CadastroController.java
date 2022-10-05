@@ -57,4 +57,9 @@ public class CadastroController {
         return (List<ClienteEntity>) clienteService.getAll();
     }
 
+
+    @GetMapping("/clientes/{documento}")
+    public ClienteEntity getByDocumento(@PathVariable String documento) {
+       clienteService.getByDocumento(documento);
+    }
 }

@@ -8,4 +8,6 @@ public interface ClienteService {
     ClienteDto criarCliente(ClienteDto cliente);
 
     ClienteDto getAll();
+
+    ClienteEntity getByDocumento(String documento);
 }
