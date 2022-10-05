@@ -1,12 +1,16 @@
 package com.squad.cadastro.controller;
 
 import com.squad.cadastro.controller.dto.ClienteDto;
+import com.squad.cadastro.repository.entity.ClienteEntity;
 import com.squad.cadastro.service.ClienteService;
 import com.squad.cadastro.validator.ValidatorInterface;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.List;
 
 @RestController
 @RequestMapping
@@ -23,7 +27,8 @@ public class CadastroController {
 
     @GetMapping("/cep/{cep}")
     public EnderecoApiResponse buscarEndereco(@PathVariable String cep){
-        return new RestTemplate().getForEntity("https://viacep.com.br/ws/"+ cep +"/json/", EnderecoApiResponse.class).getBody();
+        return new RestTemplate().getForEntity("https://viacep.com.br/ws/"+ cep +"/json/",
+            EnderecoApiResponse.class).getBody();
     }
 
     @PostMapping("/sum/{a}/{b}")
@@ -45,4 +50,11 @@ public class CadastroController {
                     HttpStatus.BAD_REQUEST);
 
     }
+
+    //Rota de listagem
+    @GetMapping("/clientes")
+    public List<ClienteEntity> getList(){
+        return (List<ClienteEntity>) clienteService.getAll();
+    }
+
 }

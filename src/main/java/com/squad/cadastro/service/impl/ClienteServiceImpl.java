@@ -5,6 +5,7 @@ import com.squad.cadastro.repository.ClienteRepository;
 import com.squad.cadastro.repository.entity.ClienteEntity;
 import com.squad.cadastro.service.ClienteService;
 import com.squad.cadastro.validator.ValidatorInterface;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -14,6 +15,7 @@ public class ClienteServiceImpl implements ClienteService {
 
     ValidatorInterface validator;
 
+    @Autowired
     ClienteRepository clienteRepository;
 
     public ClienteServiceImpl(ValidatorInterface validator, ClienteRepository clienteRepository) {
@@ -26,6 +28,7 @@ public class ClienteServiceImpl implements ClienteService {
         final var clienteCriado = clienteRepository.save(convertToEntity(clienteDto));
         return convertToDto(clienteCriado);
     }
+
 
     private ClienteEntity convertToEntity(ClienteDto clienteDto) {
         ClienteEntity clienteEntity = new ClienteEntity();
@@ -52,4 +55,10 @@ public class ClienteServiceImpl implements ClienteService {
         clienteDto.setDataAtualizacao(clienteCriado.getDataAtualizacao());
         return clienteDto;
     }
-}
+
+    //Método para pegar todos os clientes
+    public ClienteDto getAll() {
+        return (ClienteDto) clienteRepository.findAll();
+    }
+
+   }
