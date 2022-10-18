@@ -2,12 +2,13 @@ package com.squad.cadastro.service;
 
 import com.squad.cadastro.controller.dto.ClienteDto;
 import com.squad.cadastro.repository.entity.ClienteEntity;
-import org.springframework.data.domain.Page;
+
+import java.util.List;
 
 public interface ClienteService {
     ClienteDto criarCliente(ClienteDto cliente);
 
-    ClienteDto getAll();
+    List<ClienteDto> getAll();
 
-    ClienteEntity getByDocumento(String documento);
+    ClienteEntity findByDocumento(String documento);
 }

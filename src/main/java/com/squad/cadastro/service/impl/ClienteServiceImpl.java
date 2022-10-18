@@ -5,21 +5,17 @@ import com.squad.cadastro.repository.ClienteRepository;
 import com.squad.cadastro.repository.entity.ClienteEntity;
 import com.squad.cadastro.service.ClienteService;
 import com.squad.cadastro.validator.ValidatorInterface;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ClienteServiceImpl implements ClienteService {
 
     ValidatorInterface validator;
 
-    @Autowired
     ClienteRepository clienteRepository;
 
     public ClienteServiceImpl(ValidatorInterface validator, ClienteRepository clienteRepository) {
@@ -62,16 +58,24 @@ public class ClienteServiceImpl implements ClienteService {
 
     //Método para pegar todos os clientes
     public ClienteDto getAll() {
-        return (ClienteDto) clienteRepository.findAll();
+        return  (ClienteDto) clienteRepository.findAll();
+    }
+
+    @Override
+    public ClienteEntity findByDocumento(String documento) {
+        return null;
     }
 
 
-    //Rota par abusca por documento
-    public ClienteEntity getByDocumento(@RequestParam String documento){
-        final var clientePorDocumento = clienteRepository.fyndByDocumento(documento);
-        if (clientePorDocumento == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+    //Rota para busca por documento
+        public ClienteDto getByDocumento( String documento){
+            final var clientePorDocumento = clienteRepository.fyndByDocumento(documento);
+//            if (clientePorDocumento == null) {
+//                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+//            }
+            return clientePorDocumento
+                .stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
         }
-        return clientePorDocumento;
-    }
    }

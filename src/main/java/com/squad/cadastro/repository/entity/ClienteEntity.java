@@ -110,4 +110,6 @@ public class ClienteEntity implements Serializable {
     public void setDataAtualizacao(LocalDateTime dataAtualizacao) {
         this.dataAtualizacao = dataAtualizacao;
     }
+
+
 }
