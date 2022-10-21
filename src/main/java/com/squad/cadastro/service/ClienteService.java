@@ -1,7 +1,6 @@
 package com.squad.cadastro.service;
 
 import com.squad.cadastro.controller.dto.ClienteDto;
-import com.squad.cadastro.repository.entity.ClienteEntity;
 
 import java.util.List;
 
@@ -10,5 +9,7 @@ public interface ClienteService {
 
     List<ClienteDto> getAll();
 
-    ClienteEntity findByDocumento(String documento);
+    ClienteDto findByDocumento(String documento);
+
+    ClienteDto findById(Long id);
 }

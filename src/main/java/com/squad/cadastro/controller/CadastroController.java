@@ -51,19 +51,19 @@ public class CadastroController {
 
     }
 
-    //Rota de listagem
+
     @GetMapping("/clientes")
-    public List<ClienteDto> getList() {
-        return  clienteService.getAll();
+    public List<ClienteDto> getListCliente() {
+        return clienteService.getAll();
     }
 
-
-
-
-
     @GetMapping("/clientes/{documento}")
-    public ClienteEntity getByDocumento(@PathParam String documento) {
-
+    public ClienteDto getClienteByDocumento(@PathVariable String documento) {
        return clienteService.findByDocumento(documento);
+    }
+
+    @GetMapping("/clientes/{id}")
+    public ClienteDto getClienteById(@PathVariable Long id) {
+        return clienteService.findById(id);
     }
 }
