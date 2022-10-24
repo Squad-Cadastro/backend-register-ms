@@ -22,7 +22,9 @@ public class ClienteDto implements Serializable {
     public ClienteDto() {
     }
 
-    public ClienteDto(Long id, String nome, String sobrenome, String documento, String tipoPessoa, LocalDate dataNascimento, String telefone, String email, LocalDateTime dataCadastro, LocalDateTime dataAtualizacao, List<EnderecoDto> endereco) {
+    public ClienteDto(Long id, String nome, String sobrenome, String documento, String tipoPessoa,
+                      LocalDate dataNascimento, String telefone, String email, LocalDateTime dataCadastro,
+                      LocalDateTime dataAtualizacao, List<EnderecoDto> endereco) {
         this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
