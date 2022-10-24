@@ -57,12 +57,12 @@ public class CadastroController {
         return clienteService.getAll();
     }
 
-    @GetMapping("/clientes/{documento}")
+    @GetMapping("/clientes/documento/{documento}")
     public ClienteDto getClienteByDocumento(@PathVariable String documento) {
        return clienteService.findByDocumento(documento);
     }
 
-    @GetMapping("/clientes/{id}")
+    @GetMapping("/clientes/id/{id}")
     public ClienteDto getClienteById(@PathVariable Long id) {
         return clienteService.findById(id);
     }
