@@ -1,7 +1,6 @@
 package com.squad.cadastro.controller;
 
 import com.squad.cadastro.controller.dto.ClienteDto;
-import com.squad.cadastro.repository.entity.ClienteEntity;
 import com.squad.cadastro.service.ClienteService;
 import com.squad.cadastro.validator.ValidatorInterface;
 import org.springframework.http.HttpStatus;
@@ -9,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-import javax.websocket.server.PathParam;
 import java.util.List;
 
 @RestController

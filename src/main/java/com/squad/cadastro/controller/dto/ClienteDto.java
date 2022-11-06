@@ -8,7 +8,6 @@ import java.util.List;
 public class ClienteDto implements Serializable {
     private Long id;
     private String nome;
-    private String sobrenome;
     private String documento;
     private String tipoPessoa;
     private LocalDate dataNascimento;
@@ -17,6 +16,7 @@ public class ClienteDto implements Serializable {
     private LocalDateTime dataCadastro;
 
     private LocalDateTime dataAtualizacao;
+
     private List<EnderecoDto> endereco;
 
     public ClienteDto() {
@@ -27,7 +27,6 @@ public class ClienteDto implements Serializable {
                       LocalDateTime dataAtualizacao, List<EnderecoDto> endereco) {
         this.id = id;
         this.nome = nome;
-        this.sobrenome = sobrenome;
         this.documento = documento;
         this.tipoPessoa = tipoPessoa;
         this.dataNascimento = dataNascimento;
@@ -52,14 +51,6 @@ public class ClienteDto implements Serializable {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public String getSobrenome() {
-        return sobrenome;
-    }
-
-    public void setSobrenome(String sobrenome) {
-        this.sobrenome = sobrenome;
     }
 
     public String getDocumento() {

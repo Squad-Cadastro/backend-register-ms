@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name="CLIENTE_INFORMACOES")
@@ -39,8 +40,23 @@ public class ClienteEntity implements Serializable {
     @Column(name="data_atualizacao")
     private LocalDateTime dataAtualizacao;
 
+
+    @OneToMany (targetEntity = EnderecoEntity.class, fetch = FetchType.LAZY)// Aqui determino a relação 1 cliente para muitos endereços
+    @JoinTable(name="cliente_endereco",
+    joinColumns = @JoinColumn(name="endereco_id"))
+    private List<EnderecoEntity> endereco;
+
+
     public Long getId() {
         return id;
+    }
+
+    public List<EnderecoEntity> getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(List<EnderecoEntity> endereco) {
+        this.endereco = endereco;
     }
 
     public String getNome() {

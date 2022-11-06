@@ -11,6 +11,9 @@ public class EnderecoDto implements Serializable {
     private String localidade;
     private String uf;
 
+    public EnderecoDto() {
+    }
+
     public EnderecoDto(String logradouro, String principal, String numero, String cep,
                        String bairro, String localidade, String uf) {
         this.logradouro = logradouro;
