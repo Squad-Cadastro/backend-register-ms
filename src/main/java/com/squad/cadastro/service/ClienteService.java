@@ -5,7 +5,7 @@ import com.squad.cadastro.controller.dto.ClienteDto;
 import java.util.List;
 
 public interface ClienteService {
-    ClienteDto criarCliente(ClienteDto cliente);
+    ClienteDto criarCliente(ClienteDto cliente) throws Exception;
 
     List<ClienteDto> getAll();
 
