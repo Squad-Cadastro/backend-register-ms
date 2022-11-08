@@ -26,9 +26,13 @@ public class CadastroController {
     }
 
     @PostMapping("/clientes")
-    public ResponseEntity<ClienteDto> create(@RequestBody ClienteDto cliente) {
-        return new ResponseEntity<>(this.clienteService.criarCliente(cliente),
-                HttpStatus.CREATED);
+    public ResponseEntity<?> create(@RequestBody ClienteDto cliente) {
+        try {
+            return new ResponseEntity<>(this.clienteService.criarCliente(cliente),
+                    HttpStatus.CREATED);
+        } catch (Exception ex) {
+            return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+        }
     }
 
 

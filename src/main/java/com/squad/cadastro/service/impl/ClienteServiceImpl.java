@@ -30,7 +30,7 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public ClienteDto criarCliente(ClienteDto clienteDto) {
+    public ClienteDto criarCliente(ClienteDto clienteDto) throws Exception {
         validarDadosCliente(clienteDto);
         final var clienteCriado = clienteRepository.save(convertToEntity(clienteDto));
         return convertToDto(clienteCriado);
@@ -90,7 +90,7 @@ public class ClienteServiceImpl implements ClienteService {
         return clienteDto;
     }
 
-    private void validarDadosCliente(ClienteDto cliente) {
+    private void validarDadosCliente(ClienteDto cliente) throws Exception {
         var errorMessage = new StringBuilder();
         if (this.validator.validarEmail(cliente.getEmail())) {
             errorMessage.append(MessageFormat.format("Email {0} invalido. {1}",
@@ -100,12 +100,12 @@ public class ClienteServiceImpl implements ClienteService {
             errorMessage.append(MessageFormat.format("Telefone {0} invalido. {1}",
                     cliente.getTelefone(), System.getProperty(LINE_SEPARATOR)));
         }
-        if (this.validator.validarCPF(cliente.getDocumento())) {
+        if (!this.validator.validarCPF(cliente.getDocumento())) {
             errorMessage.append(MessageFormat.format("Documento {0} invalido. {1}",
                     cliente.getDocumento(), System.getProperty(LINE_SEPARATOR)));
         }
         if (!errorMessage.toString().isBlank()){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, errorMessage.toString());
+            throw new Exception(errorMessage.toString());
         }
     }
 

@@ -57,9 +57,9 @@ public class Validator implements ValidatorInterface {
             else dig11 = (char)(r + 48);
 
             // Verifica se os digitos calculados conferem com os digitos informados.
-            return !(dig10 == documento.charAt(9)) && (dig11 == documento.charAt(10));
+            return (dig10 == documento.charAt(9)) && (dig11 == documento.charAt(10));
         } catch (InputMismatchException error) {
-            return true;
+            return false;
         }
 
 
