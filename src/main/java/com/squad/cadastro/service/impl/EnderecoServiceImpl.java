@@ -2,6 +2,7 @@ package com.squad.cadastro.service.impl;
 
 
 import com.squad.cadastro.controller.dto.EnderecoDto;
+import com.squad.cadastro.repository.RepositoryClienteEndereco;
 import com.squad.cadastro.repository.entity.EnderecoEntity;
 import com.squad.cadastro.service.EnderecoService;
 import org.springframework.stereotype.Service;
@@ -9,6 +10,14 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class EnderecoServiceImpl implements EnderecoService {
+
+  RepositoryClienteEndereco endercoRepository;
+
+  @Override
+  public EnderecoDto adicionarEndereco(EnderecoDto enderecoDto) {
+    final var enderecoCriado = endercoRepository.save(convertEnderecoToEntity(enderecoDto));
+    return convertEnderecoToDto(enderecoCriado);
+  }
 
 
   private EnderecoEntity convertEnderecoToEntity(EnderecoDto enderecoDto) {

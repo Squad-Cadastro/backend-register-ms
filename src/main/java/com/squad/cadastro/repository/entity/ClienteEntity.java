@@ -41,9 +41,7 @@ public class ClienteEntity implements Serializable {
     private LocalDateTime dataAtualizacao;
 
 
-    @OneToMany (targetEntity = EnderecoEntity.class, fetch = FetchType.LAZY)// Aqui determino a relação 1 cliente para muitos endereços
-    @JoinTable(name="cliente_endereco",
-    joinColumns = @JoinColumn(name="endereco_id"))
+    @OneToMany ( fetch = FetchType.LAZY)// Aqui determino a relação 1 cliente para muitos endereços
     private List<EnderecoEntity> endereco;
 
 

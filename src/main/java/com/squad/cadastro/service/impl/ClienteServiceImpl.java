@@ -1,8 +1,11 @@
 package com.squad.cadastro.service.impl;
 
 import com.squad.cadastro.controller.dto.ClienteDto;
+import com.squad.cadastro.controller.dto.EnderecoDto;
 import com.squad.cadastro.repository.ClienteRepository;
+import com.squad.cadastro.repository.RepositoryClienteEndereco;
 import com.squad.cadastro.repository.entity.ClienteEntity;
+import com.squad.cadastro.repository.entity.EnderecoEntity;
 import com.squad.cadastro.service.ClienteService;
 import com.squad.cadastro.validator.ValidatorInterface;
 import org.springframework.http.HttpStatus;
@@ -20,6 +23,8 @@ public class ClienteServiceImpl implements ClienteService {
 
   ClienteRepository clienteRepository;
 
+
+
   public ClienteServiceImpl(ValidatorInterface validator, ClienteRepository clienteRepository) {
     this.validator = validator;
     this.clienteRepository = clienteRepository;
@@ -30,6 +35,7 @@ public class ClienteServiceImpl implements ClienteService {
     final var clienteCriado = clienteRepository.save(convertToEntity(clienteDto));
     return convertToDto(clienteCriado);
   }
+
 
   //Método para pegar todos os clientes
   @Override
@@ -84,6 +90,5 @@ public class ClienteServiceImpl implements ClienteService {
     clienteDto.setDataAtualizacao(clienteCriado.getDataAtualizacao());
     return clienteDto;
   }
-
 
 }

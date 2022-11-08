@@ -1,6 +1,7 @@
 package com.squad.cadastro.service;
 
 import com.squad.cadastro.controller.dto.ClienteDto;
+import com.squad.cadastro.controller.dto.EnderecoDto;
 
 import java.util.List;
 
