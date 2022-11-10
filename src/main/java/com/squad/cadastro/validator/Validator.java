@@ -2,6 +2,12 @@ package com.squad.cadastro.validator;
 
 import org.springframework.stereotype.Component;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.InputMismatchException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -74,4 +80,28 @@ public class Validator implements ValidatorInterface {
         Matcher matcher = pattern.matcher(email);
         return !matcher.matches();
     }
+
+//    @Override
+//    public boolean validarData(String data) {
+//        DateFormat sdf = new SimpleDateFormat(data);
+//        sdf.setLenient(false);
+//        try {
+//            sdf.parse(data);
+//        } catch (ParseException e) {
+//            return false;
+//        }
+//        return true;
+//    }
+    @Override
+    public boolean validarData(String data) {
+        try {
+            SimpleDateFormat formatoDeData = new SimpleDateFormat("dd/MM/yyyy");
+            formatoDeData.setLenient(false);
+            formatoDeData.parse(data);
+            return true;
+        } catch (ParseException ex) {
+            return false;
+        }
+    }
+
 }
