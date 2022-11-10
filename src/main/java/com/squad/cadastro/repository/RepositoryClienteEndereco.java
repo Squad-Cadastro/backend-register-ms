@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RepositoryClienteEndereco extends JpaRepository<EnderecoEntity, String> {
+public interface RepositoryClienteEndereco extends JpaRepository<EnderecoEntity, Long> {
 
 }

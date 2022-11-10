@@ -41,12 +41,19 @@ public class ClienteEntity implements Serializable {
     private LocalDateTime dataAtualizacao;
 
 
-    @OneToMany ( fetch = FetchType.LAZY)// Aqui determino a relação 1 cliente para muitos endereços
+    @OneToMany (fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinTable(name="cliente_endereco",
+    joinColumns = @JoinColumn(name="endreco_id"))
+    @Embedded
     private List<EnderecoEntity> endereco;
 
 
     public Long getId() {
         return id;
+    }
+    public void setId(Long id) {
+
+        this.id = id;
     }
 
     public List<EnderecoEntity> getEndereco() {
@@ -87,10 +94,6 @@ public class ClienteEntity implements Serializable {
 
     public LocalDateTime getDataAtualizacao() {
         return dataAtualizacao;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public void setNome(String nome) {

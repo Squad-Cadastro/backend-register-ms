@@ -11,11 +11,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class EnderecoServiceImpl implements EnderecoService {
 
-  RepositoryClienteEndereco endercoRepository;
+  RepositoryClienteEndereco enderecoRepository;
 
   @Override
   public EnderecoDto adicionarEndereco(EnderecoDto enderecoDto) {
-    final var enderecoCriado = endercoRepository.save(convertEnderecoToEntity(enderecoDto));
+    final var enderecoCriado = enderecoRepository.save(convertEnderecoToEntity(enderecoDto));
     return convertEnderecoToDto(enderecoCriado);
   }
 

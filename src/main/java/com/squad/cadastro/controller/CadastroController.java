@@ -1,6 +1,7 @@
 package com.squad.cadastro.controller;
 
 import com.squad.cadastro.controller.dto.ClienteDto;
+import com.squad.cadastro.controller.dto.EnderecoDto;
 import com.squad.cadastro.service.ClienteService;
 import com.squad.cadastro.validator.ValidatorInterface;
 import org.springframework.http.HttpStatus;
@@ -35,7 +36,7 @@ public class CadastroController {
     }
 
     @PostMapping("/clientes")
-    public ResponseEntity<?> create(@RequestBody ClienteDto cliente){
+    public ResponseEntity<?> create(@RequestBody ClienteDto cliente, EnderecoDto endereco){
         if (validatorInterface.validarEmail(cliente.getEmail())){
             return new ResponseEntity<>("Email invalido",
                     HttpStatus.BAD_REQUEST);
@@ -52,7 +53,7 @@ public class CadastroController {
 
     @GetMapping("/clientes")
     public List<ClienteDto> getListCliente() {
-        return clienteService.getAll();
+        return clienteService.getAllClientes();
     }
 
     @GetMapping("/clientes/documento/{documento}")

@@ -2,27 +2,39 @@ package com.squad.cadastro.repository.entity;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Embeddable
 @Entity
-public class EnderecoEntity {
-@Id
+@Table(name="CLIENTE_ENDERECO")
+public class EnderecoEntity implements Serializable {
+
+  private static final long serialVersionUID = 1L;
+
+  @Id
+  @GeneratedValue(strategy=GenerationType.IDENTITY)
+  private Long id;
+  @Column(name="cep")
   private String cep;
+  @Column(name="logradouro")
   private String logradouro;
+  @Column(name="principal")
   private String principal;
+  @Column(name="numero")
   private String numero;
+  @Column(name="bairro")
   private String bairro;
+  @Column(name="localidade")
   private String localidade;
+  @Column(name="uf")
   private String uf;
-
-
-  @ManyToOne
-  private ClienteEntity cliente;
 
   public EnderecoEntity() {
   }
 
-  public EnderecoEntity(String logradouro, String principal, String numero, String cep, String bairro, String localidade, String uf) {
+
+  public EnderecoEntity(Long id, String logradouro, String principal, String numero, String cep, String bairro, String localidade, String uf) {
+    this.id = id;
     this.logradouro = logradouro;
     this.principal = principal;
     this.numero = numero;
@@ -30,6 +42,14 @@ public class EnderecoEntity {
     this.bairro = bairro;
     this.localidade = localidade;
     this.uf = uf;
+  }
+
+  public Long getEnderecoId() {
+    return id;
+  }
+
+  public void setEnderecoId(Long id) {
+    this.id = id;
   }
 
   public String getLogradouro() {

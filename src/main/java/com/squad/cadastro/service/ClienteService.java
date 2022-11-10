@@ -8,7 +8,7 @@ import java.util.List;
 public interface ClienteService {
     ClienteDto criarCliente(ClienteDto cliente);
 
-    List<ClienteDto> getAll();
+    List<ClienteDto> getAllClientes();
 
     ClienteDto findByDocumento(String documento);
 

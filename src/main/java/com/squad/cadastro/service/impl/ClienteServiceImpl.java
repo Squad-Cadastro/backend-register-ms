@@ -39,7 +39,7 @@ public class ClienteServiceImpl implements ClienteService {
 
   //Método para pegar todos os clientes
   @Override
-  public List<ClienteDto> getAll() {
+  public List<ClienteDto> getAllClientes() {
     return clienteRepository.findAll()
         .stream()
         .map(this::convertToDto)
@@ -90,5 +90,6 @@ public class ClienteServiceImpl implements ClienteService {
     clienteDto.setDataAtualizacao(clienteCriado.getDataAtualizacao());
     return clienteDto;
   }
+
 
 }

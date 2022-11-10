@@ -3,6 +3,7 @@ package com.squad.cadastro.controller.dto;
 import java.io.Serializable;
 
 public class EnderecoDto implements Serializable {
+    private Long id;
     private String logradouro;
     private String principal;
     private String numero;
@@ -14,8 +15,9 @@ public class EnderecoDto implements Serializable {
     public EnderecoDto() {
     }
 
-    public EnderecoDto(String logradouro, String principal, String numero, String cep,
+    public EnderecoDto(Long id, String logradouro, String principal, String numero, String cep,
                        String bairro, String localidade, String uf) {
+        this.id = id;
         this.logradouro = logradouro;
         this.principal = principal;
         this.numero = numero;
@@ -23,6 +25,14 @@ public class EnderecoDto implements Serializable {
         this.bairro = bairro;
         this.localidade = localidade;
         this.uf = uf;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getLogradouro() {

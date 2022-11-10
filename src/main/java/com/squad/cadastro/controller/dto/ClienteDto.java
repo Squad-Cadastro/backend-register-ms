@@ -1,9 +1,11 @@
 package com.squad.cadastro.controller.dto;
 
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+
 
 public class ClienteDto implements Serializable {
     private Long id;
