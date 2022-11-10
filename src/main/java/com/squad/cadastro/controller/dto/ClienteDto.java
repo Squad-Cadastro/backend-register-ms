@@ -8,7 +8,6 @@ import java.util.List;
 public class ClienteDto implements Serializable {
     private Long id;
     private String nome;
-    private String email;
     private String documento;
     private String tipoPessoa;
     private LocalDate dataNascimento;

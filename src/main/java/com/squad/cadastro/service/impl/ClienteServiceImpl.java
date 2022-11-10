@@ -104,6 +104,9 @@ public class ClienteServiceImpl implements ClienteService {
             errorMessage.append(MessageFormat.format("Documento {0} invalido. {1}",
                     cliente.getDocumento(), System.getProperty(LINE_SEPARATOR)));
         }
+        if(this.validator.validarData(cliente.getDataNascimento())){
+            errorMessage.append(MessageFormat.format("Idade inferior a 18 anos {0}", System.getProperty(LINE_SEPARATOR)));
+        }
         if (!errorMessage.toString().isBlank()){
             throw new Exception(errorMessage.toString());
         }
