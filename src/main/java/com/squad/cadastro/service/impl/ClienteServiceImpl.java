@@ -96,7 +96,7 @@ public class ClienteServiceImpl implements ClienteService {
             errorMessage.append(MessageFormat.format("Email {0} invalido. {1}",
                     cliente.getEmail(), System.getProperty(LINE_SEPARATOR)));
         }
-        if (this.validatorTelefone.validarTelefone(cliente.getTelefone())) {
+        if (!this.validatorTelefone.validarTelefone(cliente.getTelefone())) {
             errorMessage.append(MessageFormat.format("Telefone {0} invalido. {1}",
                     cliente.getTelefone(), System.getProperty(LINE_SEPARATOR)));
         }
