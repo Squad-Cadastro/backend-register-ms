@@ -23,7 +23,7 @@ public class EnderecoServiceImpl implements EnderecoService {
   private EnderecoEntity convertEnderecoToEntity(EnderecoDto enderecoDto) {
     EnderecoEntity enderecoEntity = new EnderecoEntity();
     enderecoEntity.setLogradouro(enderecoDto.getLogradouro());
-    enderecoEntity.setPrincipal(enderecoDto.getPrincipal());
+    enderecoEntity.setPrincipal(enderecoDto.isPrincipal());
     enderecoEntity.setNumero(enderecoDto.getNumero());
     enderecoEntity.setCep(enderecoDto.getCep());
     enderecoEntity.setBairro(enderecoDto.getBairro());
@@ -35,7 +35,7 @@ public class EnderecoServiceImpl implements EnderecoService {
   private EnderecoDto convertEnderecoToDto(EnderecoEntity enderecoCriado) {
     EnderecoDto enderecoDto = new EnderecoDto();
     enderecoDto.setLogradouro(enderecoCriado.getLogradouro());
-    enderecoDto.setPrincipal(enderecoCriado.getPrincipal());
+    enderecoDto.setPrincipal(enderecoCriado.isPrincipal());
     enderecoDto.setNumero(enderecoCriado.getNumero());
     enderecoDto.setCep(enderecoCriado.getCep());
     enderecoDto.setBairro(enderecoCriado.getBairro());

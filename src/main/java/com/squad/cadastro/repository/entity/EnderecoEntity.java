@@ -6,11 +6,8 @@ import java.io.Serializable;
 
 @Embeddable
 @Entity
-@Table(name="CLIENTE_ENDERECO")
+@Table(name="cliente_endreco")
 public class EnderecoEntity implements Serializable {
-
-  private static final long serialVersionUID = 1L;
-
   @Id
   @GeneratedValue(strategy=GenerationType.IDENTITY)
   private Long id;
@@ -19,7 +16,7 @@ public class EnderecoEntity implements Serializable {
   @Column(name="logradouro")
   private String logradouro;
   @Column(name="principal")
-  private String principal;
+  private boolean principal;
   @Column(name="numero")
   private String numero;
   @Column(name="bairro")
@@ -33,7 +30,7 @@ public class EnderecoEntity implements Serializable {
   }
 
 
-  public EnderecoEntity(Long id, String logradouro, String principal, String numero, String cep, String bairro, String localidade, String uf) {
+  public EnderecoEntity(Long id, String logradouro, boolean principal, String numero, String cep, String bairro, String localidade, String uf) {
     this.id = id;
     this.logradouro = logradouro;
     this.principal = principal;
@@ -44,11 +41,11 @@ public class EnderecoEntity implements Serializable {
     this.uf = uf;
   }
 
-  public Long getEnderecoId() {
+  public Long getId() {
     return id;
   }
 
-  public void setEnderecoId(Long id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
@@ -60,11 +57,11 @@ public class EnderecoEntity implements Serializable {
     this.logradouro = logradouro;
   }
 
-  public String getPrincipal() {
+  public boolean isPrincipal() {
     return principal;
   }
 
-  public void setPrincipal(String principal) {
+  public void setPrincipal(boolean principal) {
     this.principal = principal;
   }
 

@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class EnderecoDto implements Serializable {
     private Long id;
     private String logradouro;
-    private String principal;
+    private boolean principal;
     private String numero;
     private String cep;
     private String bairro;
@@ -15,7 +15,7 @@ public class EnderecoDto implements Serializable {
     public EnderecoDto() {
     }
 
-    public EnderecoDto(Long id, String logradouro, String principal, String numero, String cep,
+    public EnderecoDto(Long id, String logradouro, boolean principal, String numero, String cep,
                        String bairro, String localidade, String uf) {
         this.id = id;
         this.logradouro = logradouro;
@@ -43,11 +43,11 @@ public class EnderecoDto implements Serializable {
         this.logradouro = logradouro;
     }
 
-    public String getPrincipal() {
+    public boolean isPrincipal() {
         return principal;
     }
 
-    public void setPrincipal(String principal) {
+    public void setPrincipal(boolean principal) {
         this.principal = principal;
     }
 
