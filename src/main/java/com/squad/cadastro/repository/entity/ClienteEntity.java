@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name="CLIENTE_INFORMACOES")
+@Table(name="cliente_informacoes")
 public class ClienteEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -40,22 +40,14 @@ public class ClienteEntity implements Serializable {
     @Column(name="data_atualizacao")
     private LocalDateTime dataAtualizacao;
 
-
-    @OneToMany (fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinTable(name="cliente_endereco",
-    joinColumns = @JoinColumn(name="endreco_id"))
-    @Embedded
+    @OneToMany (fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "clienteInformacoes")
     private List<EnderecoEntity> endereco;
 
 
     public Long getId() {
         return id;
     }
-    public void setId(Long id) {
-
-        this.id = id;
-    }
-
+    public void setId(Long id) { this.id = id; }
     public List<EnderecoEntity> getEndereco() {
         return endereco;
     }

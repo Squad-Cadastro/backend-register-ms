@@ -4,9 +4,8 @@ package com.squad.cadastro.repository.entity;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Embeddable
 @Entity
-@Table(name="cliente_endreco")
+@Table(name="cliente_endereco")
 public class EnderecoEntity implements Serializable {
   @Id
   @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -26,11 +25,15 @@ public class EnderecoEntity implements Serializable {
   @Column(name="uf")
   private String uf;
 
+  @ManyToOne(fetch = FetchType.LAZY)
+  private ClienteEntity clienteInformacoes;
+
   public EnderecoEntity() {
   }
 
 
-  public EnderecoEntity(Long id, String logradouro, boolean principal, String numero, String cep, String bairro, String localidade, String uf) {
+  public EnderecoEntity(Long id, String logradouro, boolean principal, String numero, String cep, String bairro,
+                        String localidade, String uf, ClienteEntity clienteInformacoes) {
     this.id = id;
     this.logradouro = logradouro;
     this.principal = principal;
@@ -39,6 +42,15 @@ public class EnderecoEntity implements Serializable {
     this.bairro = bairro;
     this.localidade = localidade;
     this.uf = uf;
+    this.clienteInformacoes = clienteInformacoes;
+  }
+
+  public ClienteEntity getClienteInformacoes() {
+    return clienteInformacoes;
+  }
+
+  public void setClienteInformacoes(ClienteEntity clienteInformacoes) {
+    this.clienteInformacoes = clienteInformacoes;
   }
 
   public Long getId() {
