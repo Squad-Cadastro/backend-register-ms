@@ -4,9 +4,10 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
-@Table(name="CLIENTE_INFORMACOES")
+@Table(name="cliente_informacoes")
 public class ClienteEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -39,8 +40,20 @@ public class ClienteEntity implements Serializable {
     @Column(name="data_atualizacao")
     private LocalDateTime dataAtualizacao;
 
+    @OneToMany (fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "clienteInformacoes")
+    private List<EnderecoEntity> endereco;
+
+
     public Long getId() {
         return id;
+    }
+    public void setId(Long id) { this.id = id; }
+    public List<EnderecoEntity> getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(List<EnderecoEntity> endereco) {
+        this.endereco = endereco;
     }
 
     public String getNome() {
@@ -73,10 +86,6 @@ public class ClienteEntity implements Serializable {
 
     public LocalDateTime getDataAtualizacao() {
         return dataAtualizacao;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public void setNome(String nome) {

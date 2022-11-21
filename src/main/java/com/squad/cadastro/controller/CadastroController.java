@@ -38,7 +38,7 @@ public class CadastroController {
 
     @GetMapping("/clientes")
     public List<ClienteDto> getListCliente() {
-        return clienteService.getAll();
+        return clienteService.getAllClientes();
     }
 
     @GetMapping("/clientes/documento/{documento}")
