@@ -11,8 +11,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping
-@CrossOrigin(origins = {"https://frontend-register-app-squad-cadastro.vercel.app/",
-        "https://frontend-register-app-squad-cadastro.vercel.app/pessoaFisica"})
 public class CadastroController {
     ClienteService clienteService;
 
