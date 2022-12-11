@@ -19,6 +19,11 @@ public class CadastroController {
         this.clienteService = clienteService;
     }
 
+    @GetMapping("/")
+    public ResponseEntity<String> heathyCheck() {
+        return new ResponseEntity<>("Tudo certo por aqui!", HttpStatus.OK);
+    }
+
     @GetMapping("/cep/{cep}")
     public EnderecoApiResponse buscarEndereco(@PathVariable String cep) {
         return new RestTemplate().getForEntity("https://viacep.com.br/ws/" + cep + "/json/",
