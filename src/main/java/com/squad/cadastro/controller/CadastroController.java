@@ -38,6 +38,10 @@ public class CadastroController {
             return new ResponseEntity<>("Email invalido",
                     HttpStatus.BAD_REQUEST);
         }
+        if (validatorInterface.validarIdade(cliente.getDataNascimento())) {
+            return new ResponseEntity<>("Idade menor que 18 anos",
+                    HttpStatus.BAD_REQUEST);
+        }
         if (validatorInterface.validarCPF(cliente.getDocumento())) {
             return new ResponseEntity<>(clienteService.criarCliente(cliente),
                     HttpStatus.CREATED);
@@ -45,10 +49,4 @@ public class CadastroController {
         return new ResponseEntity<>("Documento invalido",
                     HttpStatus.BAD_REQUEST);
         }
-        if (validatorInterface.validarData(cliente.getData())) {
-            return new ResponseEntity<>(cliente, HttpStatus.CREATED);
-        }
-        return new ResponseEntity<>("Data invalida",
-                HttpStatus.BAD_REQUEST);
-    }
 }
