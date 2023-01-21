@@ -1,4 +1,4 @@
-package com.squad.cadastro.controller;
+package com.squad.cadastro.controller.dto;
 import java.io.Serializable;
 
 
