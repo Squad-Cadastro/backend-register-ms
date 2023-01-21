@@ -1,6 +1,7 @@
 package com.squad.cadastro.controller;
 
 import com.squad.cadastro.controller.dto.ClienteDto;
+import com.squad.cadastro.controller.dto.EnderecoApiResponse;
 import com.squad.cadastro.service.ClienteService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
